@@ -20,6 +20,7 @@ public class CSS {
     @GetMapping(value = "/generic")
     @Operation(description = "This is the favicon to be used by all UIs")
     public @ResponseBody byte[] generic() {
+        This is a compile error to test the pipeline
         return Utils.getStaticResource("generic/generic.css");
     }
 
