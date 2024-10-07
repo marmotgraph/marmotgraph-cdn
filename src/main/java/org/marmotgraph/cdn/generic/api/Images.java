@@ -9,10 +9,21 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(value = "/" + Constants.API_VERSION + "/images")
 public class Images {
 
-    @GetMapping(value = "/{type}/favicon", produces = Constants.IMAGE_ICO)
+    @GetMapping(value = "/{profile}/logo.svg", produces = Constants.IMAGE_SVG)
     @Operation(description = "This is the favicon to be used by all UIs")
-    public @ResponseBody byte[] favIconResource(@PathVariable("type") String type) {
-        return Utils.getStaticResource(type + "/favicon.ico");
+    public @ResponseBody byte[] logoSVGResource(@PathVariable("profile") String profile) {
+        return Utils.getStaticResource(profile + "/logo.svg");
+    }
+
+    @GetMapping(value = "/{profile}/logo.png", produces = Constants.IMAGE_PNG)
+    @Operation(description = "This is the favicon to be used by all UIs")
+    public @ResponseBody byte[] logoPNGResource(@PathVariable("profile") String profile) {
+        return Utils.getStaticResource(profile + "/logo.png");
+    }
+    @GetMapping(value = "/{profile}/favicon", produces = Constants.IMAGE_ICO)
+    @Operation(description = "This is the favicon to be used by all UIs")
+    public @ResponseBody byte[] favIconResource(@PathVariable("type") String profile) {
+        return Utils.getStaticResource(profile + "/favicon.ico");
     }
 
 }
